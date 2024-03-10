@@ -52,6 +52,13 @@ export const SelectedOption: Story = {
   },
   parameters: {
     ...Default.parameters,
+    docs: {
+      description: {
+        story: '특정 option값이 선택되어있는 inputField입니다.',
+      },
+      story: { inline: true },
+      canvas: { sourceState: 'shown' },
+    },
   },
 }
 
@@ -63,6 +70,13 @@ export const ValidationError: Story = {
   },
   parameters: {
     ...Default.parameters,
+    docs: {
+      description: {
+        story: 'useForm의 유효성 에러가 발생했을때의 selectboxField입니다.',
+      },
+      story: { inline: true },
+      canvas: { sourceState: 'shown' },
+    },
   },
 }
 
@@ -73,6 +87,13 @@ export const Focused: Story = {
   },
   parameters: {
     ...Default.parameters,
+    docs: {
+      description: {
+        story: 'focus된 상태의 selectField입니다. focus가 되어야만 label이 노출됩니다.',
+      },
+      story: { inline: true },
+      canvas: { sourceState: 'shown' },
+    },
   },
 }
 
@@ -84,5 +105,12 @@ export const Disabled: Story = {
   },
   parameters: {
     ...Default.parameters,
+    docs: {
+      description: {
+        story: 'option이 선택되어 있는 상태에서 disabled된 selectboxField입니다.',
+      },
+      story: { inline: true },
+      canvas: { sourceState: 'shown' },
+    },
   },
 }
