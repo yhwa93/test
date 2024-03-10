@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Input } from '../stories/Input'
 import { FormLabel } from '../stories/FormLabel'
+import { ValidationText } from '../stories/ValidationText'
 
 export interface IFormFieldProps {
+  size: 'default' | 'full'
   type: 'text' | 'email' | 'number' | 'password'
   name: string
   value?: string
@@ -14,7 +16,10 @@ export interface IFormFieldProps {
 }
 
 export const InputField = React.forwardRef(
-  ({ autoFocus = false, validationtext = undefined, ...props }: IFormFieldProps, ref: React.ForwardedRef<any>) => {
+  (
+    { size = 'default', autoFocus = false, disabled = false, validationtext = undefined, ...props }: IFormFieldProps,
+    ref: React.ForwardedRef<any>,
+  ) => {
     const [onFocus, setOnFocus] = useState<boolean>(autoFocus)
 
     return (
@@ -24,10 +29,11 @@ export const InputField = React.forwardRef(
             {props.label}
           </FormLabel>
         ) : (
-          props.disabled && <FormLabel name={props.name}>{props.label}</FormLabel>
+          disabled && <FormLabel name={props.name}>{props.label}</FormLabel>
         )}
 
         <Input
+          size={size}
           register={props}
           inputRef={ref}
           type={props.type}
@@ -35,11 +41,11 @@ export const InputField = React.forwardRef(
           value={props.value}
           placeholder={props.placeholder}
           autoFocus={autoFocus}
-          disabled={props.disabled}
+          disabled={disabled}
           validationtext={validationtext}
           setOnFocus={setOnFocus}
         />
-        {validationtext && <p>{validationtext}</p>}
+        {validationtext && <ValidationText>{validationtext}</ValidationText>}
       </fieldset>
     )
   },

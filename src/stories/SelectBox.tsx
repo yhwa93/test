@@ -1,17 +1,36 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const SelectBoxWrapper = styled.div<{ $validationError?: boolean }>`
-  & > select:focus {
-    border: 2px solid blue;
-  }
-
+const SelectBoxWrapper = styled.div<{ $validationError?: boolean; $size: string }>`
   & > select {
+    min-width: ${(props) => (props.$size === 'default' ? '37.8rem' : '100%')};
     border: ${(props) => (props.$validationError ? '2px solid red!important' : '1px solid gray')};
+    color: #8e8e8e;
+    outline: none;
+    display: block;
+    padding: 0 1.6rem;
+    letter-spacing: 0.374px;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 300;
+    height: 4.8rem;
+    border-radius: 0.8rem;
+
+    &:focus {
+      border: 2px solid blue;
+    }
+
+    &:disabled {
+      border-color: #e0e0e0;
+      background-color: #f5f5f5;
+      color: #8e8e8e;
+    }
   }
 `
 
 interface SelectBoxProps {
+  /** selectbox 사이즈 */
+  size: 'full' | 'default'
   /** [useForm 사용시] register 메소드 */
   register?: object
   /** [useForm 사용시] select의 ref(DOM 객체)  */
@@ -35,6 +54,7 @@ interface SelectBoxProps {
 }
 
 export const SelectBox = ({
+  size = 'default',
   options = [],
   selectedOption = undefined,
   validationtext = undefined,
@@ -43,7 +63,7 @@ export const SelectBox = ({
   ...props
 }: SelectBoxProps) => {
   return (
-    <SelectBoxWrapper $validationError={Boolean(validationtext)}>
+    <SelectBoxWrapper $validationError={Boolean(validationtext)} $size={size}>
       <select
         {...props.register}
         ref={props.selectRef}

@@ -1,20 +1,38 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const InputWrapper = styled.input<{ $validationtext: boolean }>`
-  border: ${(props) => (props.$validationtext ? '2px solid red!important' : '1px solid gray')};
-  color: ${(props) => (props.$validationtext ? 'red!important' : 'black')};
+const InputWrapper = styled.input<{ $validationtext: boolean; $size: string }>`
+  border: ${(props) => (props.$validationtext ? '1px solid #ff7d59!important' : '1px solid #e0e0e0')};
+  color: #8e8e8e;
   outline: none;
+  display: block;
+  padding: 0 1.6rem;
+  letter-spacing: 0.374px;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 300;
+  min-width: ${(props) => (props.$size === 'default' ? '37.8rem' : '100%')};
+  height: 4.8rem;
+  border-radius: 0.8rem;
+  background-color: ${(props) => (props.$validationtext ? '#fff7ef' : '#ffffff')};
   &:focus {
-    border: 2px solid blue;
+    border-color: #7dc387;
+    color: #000000;
   }
   &:disabled {
-    color: gray;
-    border: 1px solid gray;
+    border-color: #e0e0e0;
+    background-color: #f5f5f5;
+    color: #8e8e8e;
+  }
+
+  &::placeholder {
+    color: #8e8e8e;
   }
 `
 
 interface InputProps {
+  /** input 사이즈 */
+  size: 'full' | 'default'
   /** [useForm 사용시] register 메소드 */
   register?: object
   /** [useForm 사용시] input의 ref(DOM 객체)  */
@@ -37,10 +55,18 @@ interface InputProps {
   setOnFocus?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const Input = ({ autoFocus = true, disabled = false, validationtext = undefined, setOnFocus = undefined, ...props }: InputProps) => {
+export const Input = ({
+  size = 'default',
+  autoFocus = true,
+  disabled = false,
+  validationtext = undefined,
+  setOnFocus = undefined,
+  ...props
+}: InputProps) => {
   return (
     <InputWrapper
       {...props.register}
+      $size={size}
       type={props.type}
       name={props.name}
       id={props.name}

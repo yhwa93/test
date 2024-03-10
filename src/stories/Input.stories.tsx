@@ -20,6 +20,7 @@ type Story = StoryObj<typeof Input>
 
 export const Default: Story = {
   args: {
+    size: 'default',
     name: 'name',
     type: 'text',
     placeholder: '이름을 입력하세요',
@@ -27,7 +28,6 @@ export const Default: Story = {
   },
   parameters: {
     componentSubtitle: '기본 input 입니다. useForm의 register 메소드를 props로 넘기면 useForm 라이브러리를 사용할 수 있습니다.',
-    layout: 'centered',
     backgrounds: {
       default: 'green',
       values: [

@@ -28,7 +28,6 @@ export const Default: Story = {
   parameters: {
     componentSubtitle:
       'label과 selectbox 조합입니다. useForm의 유효성검사 text를 포함합니다. useForm의 register 메소드를 props로 넘기면 useForm 라이브러리를 사용할 수 있습니다.',
-    layout: 'centered',
     backgrounds: {
       default: 'green',
       values: [

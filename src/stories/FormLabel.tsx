@@ -2,8 +2,12 @@ import styled from 'styled-components'
 import React from 'react'
 
 const LabelWrapper = styled.label<{ $validationtext?: boolean }>`
-  color: ${(props) => (props.$validationtext ? 'red' : 'black')};
+  color: ${(props) => (props.$validationtext ? '#ff7d59' : '#7dc387')};
   display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 300;
+  letter-spacing: 0.374px;
 `
 
 interface IFormLabelProps {

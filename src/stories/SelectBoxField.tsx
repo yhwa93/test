@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { SelectBox } from './SelectBox'
 import { FormLabel } from './FormLabel'
+import { ValidationText } from './ValidationText'
 
 export interface IFormFieldProps {
   /** select 태그의 attribute name값으로 select의 id, useForm의 name 또한 동일한 값으로 설정됩니다. */
@@ -30,10 +31,12 @@ export const SelectBoxField = React.forwardRef(
 
     return (
       <fieldset>
-        {onFocus && (
+        {onFocus ? (
           <FormLabel name={props.name} validationtext={validationtext}>
             {props.label}
           </FormLabel>
+        ) : (
+          disabled && <FormLabel name={props.name}>{props.label}</FormLabel>
         )}
         <SelectBox
           register={props}
@@ -47,7 +50,7 @@ export const SelectBoxField = React.forwardRef(
           validationtext={validationtext}
           setOnFocus={setOnFocus}
         />
-        {validationtext && <p>{validationtext}</p>}
+        {validationtext && <ValidationText>{validationtext}</ValidationText>}
       </fieldset>
     )
   },

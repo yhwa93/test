@@ -20,13 +20,13 @@ type Story = StoryObj<typeof SelectBox>
 
 export const Default: Story = {
   args: {
+    size: 'default',
     name: 'gender',
     options: ['남자', '여자'],
     placeholder: '성별을 선택하세요.',
   },
   parameters: {
     componentSubtitle: '기본 select box입니다. useForm의 register 메소드를 props로 넘기면 useForm 라이브러리를 사용할 수 있습니다.',
-    layout: 'centered',
     backgrounds: {
       default: 'green',
       values: [

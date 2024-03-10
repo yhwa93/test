@@ -20,14 +20,14 @@ type Story = StoryObj<typeof InputField>
 
 export const Default: Story = {
   args: {
+    size: 'default',
     type: 'text',
     name: 'name',
-    label: '이름 : ',
+    label: '이름',
     placeholder: '이름을 입력하세요',
   },
   parameters: {
     componentSubtitle: 'label과 input field입니다. useForm validation text를 포함합니다.',
-    layout: 'centered',
     backgrounds: {
       default: 'green',
       values: [
@@ -64,7 +64,7 @@ export const TextInputSetValue: Story = {
 export const PasswordInputSetValue: Story = {
   args: {
     ...Default.args,
-    label: '비밀번호 :',
+    label: '비밀번호',
     type: 'password',
     value: '1234qwer',
   },
