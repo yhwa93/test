@@ -4,7 +4,6 @@ import styled from 'styled-components'
 const InputWrapper = styled.input<{ $validationtext: boolean }>`
   border: ${(props) => (props.$validationtext ? '2px solid red!important' : '1px solid gray')};
   color: ${(props) => (props.$validationtext ? 'red!important' : 'black')};
-  background-color: pink;
   outline: none;
   &:focus {
     border: 2px solid blue;
